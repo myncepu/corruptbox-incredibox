@@ -1,7 +1,7 @@
 import "./style.css";
 
-import { Metadata } from "next";
-import React from "react";
+import type { Metadata } from "next";
+import type React from "react";
 import pagejson from "@/pagejson/en.json";
 
 export async function generateMetadata(): Promise<Metadata> {

@@ -1,4 +1,4 @@
-import { Post } from "@/types/post";
+import type { Post } from "@/types/post";
 
 export async function readUrl(url: string): Promise<Post | undefined> {
   try {
@@ -19,7 +19,7 @@ export async function readUrl(url: string): Promise<Post | undefined> {
       },
     });
     if (!resp.ok) {
-      throw new Error("read url failed with status: " + resp.status);
+      throw new Error(`read url failed with status: ${resp.status}`);
     }
 
     const res = await resp.json();
@@ -27,7 +27,7 @@ export async function readUrl(url: string): Promise<Post | undefined> {
 
     const { code, status, data } = res;
     if (code !== 200) {
-      throw new Error("read url failed with status: " + status);
+      throw new Error(`read url failed with status: ${status}`);
     }
 
     const { title, description, content } = data;

@@ -4,7 +4,7 @@ export function genUuid(): string {
   return uuidv4();
 }
 
-export function genUniSeq(prefix: string = ""): string {
+export function genUniSeq(prefix = ""): string {
   const timestamp = Date.now().toString(36);
   const randomPart = Math.random().toString(36).substring(2, 8);
 
@@ -25,7 +25,7 @@ export function parseEventData(data: string) {
   const dataLine = lines.find((line) => line.startsWith("data:"));
 
   if (!dataLine) {
-    throw new Error("invalid event data: " + data);
+    throw new Error(`invalid event data: ${data}`);
   }
 
   const jsonData = dataLine.replace("data: ", "");
@@ -33,8 +33,8 @@ export function parseEventData(data: string) {
     const dataObj = JSON.parse(jsonData);
 
     return dataObj;
-  } catch (e) {
-    throw e;
+  } catch {
+    throw new Error(`invalid event data: ${data}`);
   }
 }
 

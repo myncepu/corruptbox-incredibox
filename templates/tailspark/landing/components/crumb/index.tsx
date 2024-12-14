@@ -1,11 +1,11 @@
 import { FiHome } from "react-icons/fi";
 import { MdKeyboardArrowRight } from "react-icons/md";
-import { Project } from "@/types/project";
+import type { Project } from "@/types/project";
 
 export default ({ project }: { project: Project }) => {
   return (
     <nav className="flex" aria-label="Breadcrumb">
-      <ol role="list" className="flex items-center space-x-2">
+      <ul className="flex items-center space-x-2">
         <li>
           <div>
             <a className="text-gray-400 hover:text-gray-500" href="/">
@@ -34,13 +34,13 @@ export default ({ project }: { project: Project }) => {
             <a
               className="ml-2 text-md font-medium text-gray-500 hover:text-gray-700"
               aria-current="page"
-              // href={renameShortUrl(gpts.short_url, gpts.uuid)}
+              href={`/${project.name}`}
             >
               {project.name}
             </a>
           </div>
         </li>
-      </ol>
+      </ul>
     </nav>
   );
 };

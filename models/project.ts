@@ -1,4 +1,4 @@
-import { Project } from "@/types/project";
+import type { Project } from "@/types/project";
 import { getSupabaseClient } from "./db";
 
 export enum ProjectStatus {
@@ -139,13 +139,8 @@ export async function getProjectsWithoutSummary(
   page: number,
   limit: number
 ): Promise<Project[]> {
-  if (!page) {
-    page = 1;
-  }
-
-  if (!limit) {
-    limit = 20;
-  }
+  const pageNumber = page || 1;
+  const limitNumber = limit || 20;
 
   const supabase = getSupabaseClient();
   const { data, error } = await supabase
@@ -153,7 +148,7 @@ export async function getProjectsWithoutSummary(
     .select("*")
     .is("summary", null)
     .eq("status", ProjectStatus.Created)
-    .range((page - 1) * limit, page * limit - 1);
+    .range((pageNumber - 1) * limitNumber, pageNumber * limitNumber - 1);
 
   if (error) return [];
 

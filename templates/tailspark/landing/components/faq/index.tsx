@@ -2,7 +2,7 @@
 
 import { AnimatePresence, motion } from "framer-motion";
 
-import { Section } from "@/types/landing";
+import type { Section } from "@/types/landing";
 import { useState } from "react";
 
 export default function ({ section }: { section: Section }) {
@@ -20,10 +20,11 @@ export default function ({ section }: { section: Section }) {
       <div className="space-y-4">
         {section?.items?.map((faq, index) => (
           <div
-            key={index}
+            key={faq.title}
             className="border border-[#7e7e7e] rounded-lg overflow-hidden"
           >
             <button
+              type="button"
               className="w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50"
               onClick={() => toggleFAQ(index)}
             >
@@ -35,6 +36,8 @@ export default function ({ section }: { section: Section }) {
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
+                role="img"
+                aria-label="Toggle FAQ"
               >
                 <path
                   strokeLinecap="round"

@@ -1,5 +1,5 @@
 import BgStar from "../../assets/imgs/bgstar.svg";
-import { Hero } from "@/types/landing";
+import type { Hero } from "@/types/landing";
 
 export default ({ hero, count }: { hero: Hero; count?: number }) => {
   return (

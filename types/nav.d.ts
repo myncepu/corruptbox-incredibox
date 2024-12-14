@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+type ReactNode = import("react").ReactNode;
 
 export interface Nav {
   title: string;

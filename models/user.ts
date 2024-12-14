@@ -1,4 +1,4 @@
-import { User } from "@/types/user";
+import type { User } from "@/types/user";
 import { getSupabaseClient } from "./db";
 
 export async function insertUser(user: User) {
@@ -39,7 +39,20 @@ export async function findUserByUuid(uuid: string): Promise<User | undefined> {
   return formatUser(data);
 }
 
-export function formatUser(row: any): User {
+type UserRow = {
+  uuid: string;
+  email: string;
+  created_at: string;
+  nickname: string;
+  avatar_url: string;
+  locale: string;
+  signin_type: string;
+  signin_ip: string;
+  signin_provider: string;
+  signin_openid: string;
+};
+
+export function formatUser(row: UserRow): User {
   const user: User = {
     uuid: row.uuid,
     email: row.email,

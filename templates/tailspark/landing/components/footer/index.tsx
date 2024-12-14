@@ -1,6 +1,6 @@
 "use client";
 
-import { Footer, Item } from "@/types/landing";
+import type { Footer, Item } from "@/types/landing";
 
 export default ({ footer }: { footer: Footer }) => {
   return (
@@ -19,7 +19,7 @@ export default ({ footer }: { footer: Footer }) => {
             <div className="mb-4 flex max-w-[272px] items-start justify-start">
               <img
                 src="https://assets.website-files.com/6357722e2a5f19121d37f84d/6358f6e24e55dd49a541fd06_EnvelopeSimple-3.svg"
-                alt="image"
+                alt="email"
                 className="mr-3 inline-block"
               />
               <a
@@ -32,18 +32,18 @@ export default ({ footer }: { footer: Footer }) => {
             </div>
           </div>
         </div>
-        <div className="mb-14 mt-16 w-full [border-bottom:1.7px_solid_rgb(0,_0,_0)]"></div>
+        <div className="mb-14 mt-16 w-full [border-bottom:1.7px_solid_rgb(0,_0,_0)]" />
         <div className="flex flex-row justify-between max-[991px]:items-center max-[767px]:flex-col max-[767px]:items-start max-[479px]:flex-col-reverse">
           {footer?.nav?.items?.map((item: Item, idx: number) => {
             return (
               <div
                 className="max-[991px]: text-left font-semibold max-[991px]:py-1 max-[479px]:mb-4"
-                key={idx}
+                key={`footer-nav-${item?.title}-${idx}`}
               >
                 <p>{item?.title}</p>
-                {item?.children?.map((child: Item, iidx: number) => {
+                {item?.children?.map((child: Item) => {
                   return (
-                    <p key={iidx}>
+                    <p key={child?.url}>
                       <a
                         href={child?.url}
                         className="inline-block py-1.5 font-normal text-[#276EF1] transition hover:text-[#276EF1]"

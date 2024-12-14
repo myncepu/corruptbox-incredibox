@@ -5,8 +5,8 @@ import {
   updateProject,
 } from "@/models/project";
 
-import { ChatCompletionCreateParamsNonStreaming } from "openai/resources/index.mjs";
-import { Project } from "@/types/project";
+import type { ChatCompletionCreateParamsNonStreaming } from "openai/resources/index.mjs";
+import type { Project } from "@/types/project";
 import { extractProjectPrompt } from "@/services/prompts/extract_project";
 import { genUuid } from "@/utils";
 import { getIsoTimestr } from "@/utils/time";
@@ -107,7 +107,7 @@ export async function sumProject(project: Project): Promise<Project> {
     if (!project.content && content_url) {
       const post = await readUrl(content_url);
       console.log("post", post);
-      if (post && post.content && post.content.length > 100) {
+      if (post?.content && post.content.length > 100) {
         project.content = post.content;
         project.updated_at = getIsoTimestr();
       }
@@ -179,7 +179,7 @@ export async function saveProject(
 
     const existProject = await findProjectByName(project.name);
 
-    if (existProject && existProject.uuid) {
+    if (existProject?.uuid) {
       project.uuid = existProject.uuid;
       project.created_at = existProject.created_at;
       await updateProject(existProject.uuid, project);

@@ -1,4 +1,5 @@
-import OpenAI, { ClientOptions } from "openai";
+import OpenAI from "openai";
+import type { ClientOptions } from "openai";
 
 export function getOpenAIClient(model?: string): OpenAI {
   const options: ClientOptions = {

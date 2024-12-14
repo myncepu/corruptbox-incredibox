@@ -1,4 +1,4 @@
-export function respData(data: any) {
+export function respData<T>(data: T | undefined | null) {
   return respJson(0, "ok", data || []);
 }
 
@@ -10,14 +10,14 @@ export function respErr(message: string) {
   return respJson(-1, message);
 }
 
-export function respJson(code: number, message: string, data?: any) {
-  let json = {
+export function respJson(code: number, message: string, data?: unknown) {
+  const json = {
     code: code,
     message: message,
     data: data,
   };
   if (data) {
-    json["data"] = data;
+    json.data = data;
   }
 
   return Response.json(json);

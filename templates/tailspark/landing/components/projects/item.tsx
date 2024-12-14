@@ -1,7 +1,6 @@
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import Link from "next/link";
-import { Project } from "@/types/project";
-import StarIcon from "../../assets/imgs/star.svg";
+import type { Project } from "@/types/project";
 import Stars from "../stars";
 import moment from "moment";
 
@@ -20,7 +19,7 @@ export default ({ project }: { project: Project }) => {
           {project.avatar_url && (
             <LazyLoadImage
               src={project.avatar_url}
-              placeholderSrc={`/logo.png`}
+              placeholderSrc={"/logo.png"}
               alt={project.title}
               className="mr-4 inline-block h-16 w-16 object-cover rounded-full"
             />
@@ -34,7 +33,7 @@ export default ({ project }: { project: Project }) => {
 
         <div className="flex items-center">
           {true && <Stars />}
-          <div className="flex-1"></div>
+          <div className="flex-1" />
 
           <p className="text-slate-500 text-sm">
             {moment(project.created_at).fromNow()}
