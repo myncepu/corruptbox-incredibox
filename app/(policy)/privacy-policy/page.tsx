@@ -1,6 +1,7 @@
 import Markdown from "@/components/markdown";
+import Link from "next/link";
 import { MdOutlineHome } from "react-icons/md";
-import { Metadata } from "next";
+import type { Metadata } from "next";
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
@@ -11,7 +12,7 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 }
 
-export default function () {
+export default function PrivacyPolicy() {
   const content = `# Privacy Policy
 
 ## Introduction
@@ -66,10 +67,10 @@ We may update this privacy policy periodically. Any changes will be posted on th
 Last updated: December 6, 2024`;
   return (
     <div>
-      <a className="text-base-content cursor-pointer" href="/">
+      <Link className="text-base-content cursor-pointer" href="/">
         <MdOutlineHome className="text-2xl mx-8 my-8" />
         {/* <img className="w-10 h-10 mx-4 my-4" src="/logo.png" /> */}
-      </a>
+      </Link>
       <div className="max-w-3xl mx-auto leading-loose pt-4 pb-8 px-8">
         <Markdown content={content} />
       </div>

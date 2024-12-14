@@ -1,6 +1,7 @@
 import Markdown from "@/components/markdown";
 import { MdOutlineHome } from "react-icons/md";
-import { Metadata } from "next";
+import type { Metadata } from "next";
+import Link from "next/link";
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
@@ -11,7 +12,7 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 }
 
-export default function () {
+export default function TermsOfService() {
   const content = ` # Terms of Service
 
 ## Introduction and Acceptance of Terms
@@ -117,10 +118,10 @@ By using MCP.so, you acknowledge that you have read and agree to these Terms of 
 
   return (
     <div>
-      <a className="text-base-content cursor-pointer" href="/">
+      <Link className="text-base-content cursor-pointer" href="/">
         <MdOutlineHome className="text-2xl mx-8 my-8" />
         {/* <img className="w-10 h-10 mx-4 my-4" src="/logo.png" /> */}
-      </a>
+      </Link>
       <div className="max-w-3xl mx-auto leading-loose pt-4 pb-8 px-8">
         <Markdown content={content} />
       </div>

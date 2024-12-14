@@ -1,10 +1,9 @@
 import * as xmlbuilder from "xmlbuilder";
 
-import { Project } from "@/types/project";
 import { getProjects } from "@/models/project";
 import moment from "moment";
 import { respData } from "@/utils/resp";
-import { writeFile } from "fs";
+import { writeFile } from "node:fs";
 
 export const runtime = "edge";
 
@@ -21,8 +20,8 @@ export async function POST(req: Request) {
       page_step = 5;
     }
 
-    let start_page = (batch_no - 1) * page_step + 1;
-    let end_page = start_page + page_step - 1;
+    const start_page = (batch_no - 1) * page_step + 1;
+    const end_page = start_page + page_step - 1;
     let page = start_page;
     let total = 0;
 
@@ -39,16 +38,16 @@ export async function POST(req: Request) {
       page += 1;
       total += projects_len;
 
-      projects.forEach((project: Project) => {
+      for (const project of projects) {
         const urlElement = root.ele("url");
-        urlElement.ele("loc", "https://mcp.so/server/" + project.name);
+        urlElement.ele("loc", `https://mcp.so/server/${project.name}`);
         urlElement.ele(
           "lastmod",
           moment(project.updated_at).format("YYYY-MM-DD")
         );
         // urlElement.ele("changefreq", "monthly");
         // urlElement.ele("priority", "0.6");
-      });
+      }
 
       if (page > end_page || projects_len === 0) {
         break;

@@ -22,7 +22,7 @@ export async function generateMetadata({
   };
 }
 
-export default async function ({
+export default async function ProjectPage({
   params,
 }: {
   params: Promise<{ name: string }>;

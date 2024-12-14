@@ -9,13 +9,15 @@ import hljs from "highlight.js";
 
 export default function Markdown({ content }: { content: string }) {
   const md: MarkdownIt = new MarkdownIt({
-    highlight: function (str: string, lang: string) {
+    highlight: (str: string, lang: string) => {
       if (lang && hljs.getLanguage(lang)) {
         try {
           return `<pre class="hljs"><code>${
             hljs.highlight(str, { language: lang, ignoreIllegals: true }).value
           }</code></pre>`;
-        } catch (_) {}
+        } catch (e) {
+          console.error(e);
+        }
       }
 
       return `<pre class="hljs"><code>${md.utils.escapeHtml(str)}</code></pre>`;
@@ -27,6 +29,7 @@ export default function Markdown({ content }: { content: string }) {
   return (
     <div
       className="max-w-full overflow-x-auto markdown"
+      // biome-ignore lint/security/noDangerouslySetInnerHtml: <explanation>
       dangerouslySetInnerHTML={{ __html: renderedMarkdown }}
     />
   );

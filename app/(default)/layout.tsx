@@ -1,5 +1,5 @@
 import LandingLayout from "@/templates/tailspark/landing/layout";
-import { Metadata } from "next";
+import type { Metadata } from "next";
 import pagejson from "@/pagejson/en.json";
 
 export const metadata: Metadata = {
@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   },
 };
 
-export default function ({
+export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;

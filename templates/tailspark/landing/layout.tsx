@@ -2,7 +2,7 @@ import "./assets/style.css";
 
 import Footer from "./components/footer";
 import Header from "./components/header";
-import { Page } from "@/types/landing";
+import type { Page } from "@/types/landing";
 
 export default function ({
   children,

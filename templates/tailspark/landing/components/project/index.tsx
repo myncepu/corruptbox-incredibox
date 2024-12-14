@@ -3,7 +3,7 @@ import { BsTags } from "react-icons/bs";
 import Crumb from "../crumb";
 import Markdown from "@/components/markdown";
 import Preview from "./preview";
-import { Project } from "@/types/project";
+import type { Project } from "@/types/project";
 import Projects from "../projects";
 import Stars from "../stars";
 import moment from "moment";
@@ -45,7 +45,7 @@ export default ({
             <p className="text-sm text-[#808080] sm:text-xl mt-4">
               {project.description}
             </p>
-            <div className="mb-8 mt-8 h-px w-full bg-black"></div>
+            <div className="mb-8 mt-8 h-px w-full bg-black" />
             <div className="mb-6 flex flex-col gap-2 text-sm text-[#808080] sm:text-base lg:mb-8">
               <p className="font-medium">
                 <BiCategory className="inline-block mr-2" />
@@ -60,24 +60,26 @@ export default ({
                 <BsTags className="inline-block mr-2" />
                 Tags
               </p>
-              {tagsArr &&
-                tagsArr.map((tag) => (
-                  <p key={tag}>
-                    <input
-                      type="checkbox"
-                      className="mr-2"
-                      readOnly
-                      checked={tagsArr && tagsArr.includes(tag)}
-                    />
-                    {tag}
-                  </p>
-                ))}
+              {tagsArr?.map((tag) => (
+                <p key={tag}>
+                  <input
+                    type="checkbox"
+                    className="mr-2"
+                    readOnly
+                    checked={tagsArr?.includes(tag)}
+                    aria-label={`Tag: ${tag}`}
+                    id={`tag-${tag}`}
+                  />
+                  <label htmlFor={`tag-${tag}`}>{tag}</label>
+                </p>
+              ))}
             </div>
 
             <div className="flex flex-col gap-4 font-semibold sm:flex-row">
               <a
                 href={project.url}
                 target="_blank"
+                rel="noreferrer"
                 className="flex items-center gap-2 rounded-md border border-solid bg-primary text-white px-6 py-3 truncate"
               >
                 <span>Visit {project.title} 👉</span>

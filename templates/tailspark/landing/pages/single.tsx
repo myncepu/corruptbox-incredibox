@@ -1,4 +1,4 @@
-import { Project } from "@/types/project";
+import type { Project } from "@/types/project";
 import ProjectDetail from "@/templates/tailspark/landing/components/project";
 
 export default function ({

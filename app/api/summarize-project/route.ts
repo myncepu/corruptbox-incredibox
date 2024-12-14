@@ -7,7 +7,7 @@ export const runtime = "edge";
 
 export async function POST(req: Request) {
   try {
-    let { name } = await req.json();
+    const { name } = await req.json();
     if (!name) {
       return respErr("name is required");
     }

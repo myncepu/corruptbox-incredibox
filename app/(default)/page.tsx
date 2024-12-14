@@ -5,12 +5,12 @@ import {
 } from "@/models/project";
 
 import LandingPage from "@/templates/tailspark/landing/pages/index";
-import { Project } from "@/types/project";
+import type { Project } from "@/types/project";
 import pagejson from "@/pagejson/en.json";
 
 export const runtime = "edge";
 
-export default async function ({
+export default async function Home({
   searchParams,
 }: {
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
