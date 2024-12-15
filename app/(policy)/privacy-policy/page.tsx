@@ -5,7 +5,7 @@ import type { Metadata } from "next";
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
-    title: "Privacy Policy",
+    title: "Privacy Policy - Corruptbox",
     alternates: {
       canonical: `${process.env.NEXT_PUBLIC_WEB_URL}/privacy-policy`,
     },
@@ -17,59 +17,63 @@ export default function PrivacyPolicy() {
 
 ## Introduction
 
-Welcome to mcp.so, a third-party Model Context Protocol (MCP) servers store. We value your privacy and are committed to protecting your personal information. This privacy policy explains how we collect, use, and safeguard your information when you use our MCP server hosting and distribution services.
+Welcome to Corruptbox Incredibox, an experimental music creation platform. We value your privacy and are committed to protecting your personal information. This privacy policy explains how we collect, use, and safeguard your information when you use our interactive music creation services.
 
 ## Information Collection and Use
 
 We collect and use the following types of information:
 
-1. **MCP Server Information**
-   - **What We Collect**: Information necessary to host and distribute MCP servers, including server configurations, technical specifications, and usage metrics.
-   - **Purpose**: To provide secure and reliable MCP server hosting and distribution services.
+1. **Game Data**
+   - **What We Collect**: Basic gameplay information, including music compositions and settings preferences.
+   - **Purpose**: To provide and improve the music creation experience.
 
-2. **Account Information**
-   - **What We Collect**: Basic contact information such as name, email, and developer/organization details.
-   - **Purpose**: To manage user accounts and provide support for MCP server deployments.
+2. **Technical Data**
+   - **What We Collect**: Information about your browser, device type, and how you interact with our platform.
+   - **Purpose**: To optimize game performance and ensure compatibility across different devices.
 
-3. **Technical Data**
-   - **What We Collect**: Information about how you interact with our MCP servers and platform.
-   - **Purpose**: To improve our services, ensure security, and enhance user experience.
+3. **Optional Account Information**
+   - **What We Collect**: If you choose to save or share your creations, we may collect your username and email.
+   - **Purpose**: To enable music sharing and community features.
 
 ## Data Security
 
-We implement industry-standard security measures to protect your information and MCP server data. All data is treated with strict confidentiality and is only accessed by authorized personnel who need it to maintain our services.
+We implement industry-standard security measures to protect your information. Your musical creations and personal data are treated with strict confidentiality and are only accessed by authorized personnel when necessary for maintaining our services.
 
 ## Information Sharing
 
 We do not sell or share your information with third parties except:
 - When required by law
 - With your explicit consent
-- With service providers who help us operate our services (under confidentiality agreements)
+- For essential service operations (under confidentiality agreements)
 
 ## Your Rights
 
 You have the right to:
-- Access your personal information
+- Access your saved compositions and personal information
 - Request corrections to your data
-- Request deletion of your data
-- Opt-out of marketing communications
+- Delete your account and associated data
+- Opt-out of non-essential communications
+
+## Children's Privacy
+
+Corruptbox is designed to be family-friendly. We do not knowingly collect personal information from children under 13 without parental consent. If you believe we have inadvertently collected such information, please contact us immediately.
 
 ## Contact Us
 
 If you have questions about this privacy policy or our privacy practices, please contact us at:
 
-**Email**: [support@mcp.so](mailto:support@mcp.so)
+**Email**: [contact@corruptboxincredibox.com](mailto:contact@corruptboxincredibox.com)
 
 ## Updates to This Policy
 
-We may update this privacy policy periodically. Any changes will be posted on this page with an updated effective date. Your continued use of our services after such modifications constitutes your acknowledgment of the modified policy.
+We may update this privacy policy periodically. Any changes will be posted on this page with an updated effective date. Your continued use of Corruptbox after such modifications constitutes your acknowledgment of the modified policy.
 
-Last updated: December 6, 2024`;
+Last updated: ${new Date().toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}`;
+
   return (
     <div>
       <Link className="text-base-content cursor-pointer" href="/">
         <MdOutlineHome className="text-2xl mx-8 my-8" />
-        {/* <img className="w-10 h-10 mx-4 my-4" src="/logo.png" /> */}
       </Link>
       <div className="max-w-3xl mx-auto leading-loose pt-4 pb-8 px-8">
         <Markdown content={content} />

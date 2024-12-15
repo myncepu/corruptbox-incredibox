@@ -6,7 +6,7 @@
   },
   "header": {
     "brand": {
-      "title": "Corruptbox",
+      "title": "Corruptbox Incredibox",
       "url": "/",
       "avatar": {
         "src": "/logo.png"
@@ -15,20 +15,20 @@
     "nav": {
       "items": [
         {
-          "title": "Play Now",
-          "url": "/play",
+          "title": "All Games",
+          "url": "/all",
           "target": "_self"
         },
         {
-          "title": "Discord",
-          "url": "https://discord.gg/RsYPRrnyqg",
-          "target": "_blank"
+          "title": "Download",
+          "url": "/download",
+          "target": "_self"
         }
       ]
     }
   },
   "hero": {
-    "title": "Welcome to Corruptbox",
+    "title": "Welcome to Corruptbox Incredibox",
     "description": "Dive into a surreal digital realm where music meets chaos"
   },
   "faq": {
@@ -114,6 +114,16 @@
               "title": "Share Your Music",
               "url": "/share",
               "target": "_self"
+            }
+          ]
+        },
+        {
+          "title": "Other",
+          "children": [
+            {
+              "title": "Who made the sounds for Incredibox?",
+              "url": "/who-made-the-sounds-for-Incredibox",
+              "target": "_blank"
             }
           ]
         }

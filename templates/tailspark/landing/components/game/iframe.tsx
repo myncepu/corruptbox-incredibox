@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import Image from 'next/image';
 import { IoPlayCircleOutline } from "react-icons/io5";
 import { IoExpand } from "react-icons/io5";
@@ -33,7 +33,7 @@ export default function GameIframe({ game }: { game: Game }) {
   return (
     <div 
       ref={containerRef}
-      className="relative w-full aspect-video rounded-2xl overflow-hidden bg-gray-900"
+      className="relative w-[calc(100%-2rem)] aspect-video rounded-2xl overflow-hidden bg-gray-900 mx-auto my-4 max-w-5xl"
     >
       {!isPlaying ? (
         <div className="relative w-full h-full">

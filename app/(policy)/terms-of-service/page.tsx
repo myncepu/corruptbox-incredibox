@@ -5,7 +5,7 @@ import Link from "next/link";
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
-    title: "Terms of Service",
+    title: "Terms of Service - Corruptbox",
     alternates: {
       canonical: `${process.env.NEXT_PUBLIC_WEB_BASE_URL}/terms-of-service`,
     },
@@ -17,110 +17,120 @@ export default function TermsOfService() {
 
 ## Introduction and Acceptance of Terms
 
-Welcome to **MCP** (mcp.so), a platform dedicated to providing a marketplace for Model Context Protocol (MCP) servers. Our service enables developers and organizations to discover, share, and manage MCP servers that connect AI assistants with various data sources. By accessing or using our service, you agree to be bound by these Terms of Service.
+Welcome to **Corruptbox** (corruptboxincredibox.com), an experimental music creation platform that combines digital art with interactive sound design. By accessing or using our service, you agree to be bound by these Terms of Service.
 
 ## Use of the Service
 
-MCP.so provides a platform where users can:
-- Browse and discover MCP server implementations
-- Share and publish their own MCP servers
-- Access documentation and implementation guides
-- Manage MCP server deployments and configurations
+Corruptbox provides an interactive platform where users can:
+- Create unique musical compositions using our digital interface
+- Experience glitch art and experimental sound design
+- Save and share musical creations
+- Interact with the Sprunki Mod features
+- Participate in our creative community
 
 You agree to use the service in accordance with all applicable laws and regulations.
 
-## User Accounts and Registration
+## User Content and Creations
 
-1. **Account Creation**: To publish or manage MCP servers, you must create an account by providing accurate and complete information.
+1. **Your Creations**: You retain rights to the musical compositions you create using Corruptbox.
 
-2. **Account Security**: You are responsible for maintaining the confidentiality of your account credentials and for all activities under your account.
+2. **Platform License**: By creating and sharing content through our platform, you grant Corruptbox a non-exclusive license to host, display, and enable sharing of your creations.
 
-3. **Developer Responsibilities**: When publishing MCP servers, you must provide accurate documentation, maintain security standards, and respond to reported issues.
-
-## Content and Intellectual Property Rights
-
-1. **Platform Rights**: The MCP.so platform, including its interface, features, and functionality, is protected under copyright law. MCP.so retains all rights to the platform infrastructure.
-
-2. **User Content**: You retain your rights to any MCP servers you publish. By publishing, you grant MCP.so a license to host and distribute your content through our platform.
-
-3. **Open Source**: We encourage open-source contributions while respecting individual licensing choices.
+3. **Community Guidelines**: When sharing creations, you agree to:
+   - Respect other users' creative rights
+   - Not upload inappropriate or offensive content
+   - Follow our community standards
 
 ## Prohibited Activities
 
 You agree not to:
-- Publish malicious or harmful MCP servers
-- Misrepresent server capabilities or compatibility
-- Access other users' accounts without authorization
-- Interfere with the platform's security or performance
-- Attempt to reverse engineer the platform
-- Use the service for any illegal purpose
+- Attempt to bypass any platform restrictions
+- Use the service for any illegal purposes
+- Share inappropriate or harmful content
+- Interfere with other users' experience
+- Reverse engineer the platform
+- Create automated or bot accounts
+- Exploit bugs or glitches
+
+## Service Features
+
+1. **Free Features**: Basic music creation and gameplay features are provided free of charge.
+
+2. **Optional Features**: Some advanced features or content may require registration or payment.
+
+3. **Availability**: We strive to maintain continuous service but do not guarantee uninterrupted access.
+
+## Intellectual Property
+
+1. **Platform Rights**: The Corruptbox platform, including its interface, artwork, sound effects, and original content, is protected by copyright law.
+
+2. **User Rights**: You maintain ownership of your original musical compositions created using our platform.
+
+3. **Fair Use**: You may share recordings of your gameplay and creations for non-commercial purposes.
 
 ## Data Collection and Privacy
 
 We collect and process:
-- Account information
-- MCP server metadata and configurations
-- Usage analytics and deployment statistics
-- Technical logs
-- Payment information (if applicable)
+- Gameplay data and settings
+- Musical compositions (when saved)
+- Optional account information
+- Technical and performance data
 
 For complete details, see our [Privacy Policy](/privacy-policy).
 
-## Service Availability and Support
+## Service Modifications
 
-- The service is provided "as is" and "as available"
-- Support is available via support@mcp.so
-- We maintain a public status page for service availability
-- We may modify or discontinue features with notice
+We reserve the right to:
+- Update or modify the platform
+- Add or remove features
+- Change or discontinue services
+- Modify these terms with notice
 
-## MCP Server Guidelines
+## Account Termination
 
-Published servers must:
-- Follow MCP specification standards
-- Include proper documentation
-- Maintain security best practices
-- Respect data privacy requirements
-- Include clear licensing terms
-
-## Termination
-
-We reserve the right to suspend or terminate accounts that:
+We may suspend or terminate accounts that:
 - Violate these terms
-- Publish malicious or harmful servers
-- Engage in fraudulent activity
-- Have extended periods of inactivity
-- Fail to maintain published servers
+- Share inappropriate content
+- Engage in disruptive behavior
+- Attempt to abuse or exploit the platform
 
 ## Disclaimer of Warranties
 
-THE SERVICE IS PROVIDED "AS IS" WITHOUT ANY EXPRESS OR IMPLIED WARRANTIES. MCP.SO DISCLAIMS ALL WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND NON-INFRINGEMENT.
+THE SERVICE IS PROVIDED "AS IS" WITHOUT WARRANTIES OF ANY KIND. CORRUPTBOX DISCLAIMS ALL WARRANTIES, EXPRESS OR IMPLIED, INCLUDING MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.
 
 ## Limitation of Liability
 
-TO THE MAXIMUM EXTENT PERMITTED BY LAW, MCP.SO SHALL NOT BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL OR PUNITIVE DAMAGES ARISING FROM YOUR USE OF THE SERVICE OR ANY MCP SERVERS PUBLISHED THROUGH THE SERVICE.
+TO THE MAXIMUM EXTENT PERMITTED BY LAW, CORRUPTBOX SHALL NOT BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, OR CONSEQUENTIAL DAMAGES ARISING FROM YOUR USE OF THE SERVICE.
+
+## Children's Use
+
+1. Corruptbox is designed to be family-friendly.
+2. Users under 13 require parental consent.
+3. We do not knowingly collect personal information from children without parental consent.
 
 ## Changes to Terms
 
-We may update these terms at any time. Continued use of the service after changes constitutes acceptance of the new terms.
+We may update these terms periodically. Continued use of the service after changes constitutes acceptance of the new terms.
 
 ## Governing Law
 
-These terms shall be governed by and construed in accordance with the laws of the jurisdiction where MCP.so operates, without regard to conflict of law principles.
+These terms shall be governed by and construed in accordance with applicable laws, without regard to conflict of law principles.
 
 ## Contact Information
 
-For questions about these terms, please contact us at [support@mcp.so](mailto:support@mcp.so).
+For questions about these terms, please contact us at:
+[contact@corruptboxincredibox.com](mailto:contact@corruptboxincredibox.com)
 
 ---
 
-By using MCP.so, you acknowledge that you have read and agree to these Terms of Service.
-`;
+Last updated: ${new Date().toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}
+
+By using Corruptbox, you acknowledge that you have read and agree to these Terms of Service.`;
 
   return (
     <div>
       <Link className="text-base-content cursor-pointer" href="/">
         <MdOutlineHome className="text-2xl mx-8 my-8" />
-        {/* <img className="w-10 h-10 mx-4 my-4" src="/logo.png" /> */}
       </Link>
       <div className="max-w-3xl mx-auto leading-loose pt-4 pb-8 px-8">
         <Markdown content={content} />

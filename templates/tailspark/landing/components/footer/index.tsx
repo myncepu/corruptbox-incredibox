@@ -33,7 +33,7 @@ export default ({ footer }: { footer: Footer }) => {
           </div>
         </div>
         <div className="mb-14 mt-16 w-full [border-bottom:1.7px_solid_rgb(0,_0,_0)]" />
-        <div className="flex flex-row justify-between max-[991px]:items-center max-[767px]:flex-col max-[767px]:items-start max-[479px]:flex-col-reverse">
+        <div className="flex flex-row justify-between max-[991px]:flex-start max-[767px]:flex-col max-[767px]:flex-start max-[479px]:flex-col-reverse">
           {footer?.nav?.items?.map((item: Item, idx: number) => {
             return (
               <div
@@ -57,21 +57,20 @@ export default ({ footer }: { footer: Footer }) => {
               </div>
             );
           })}
-
-          <div className="max-[991px]:flex-none">
-            <p className="text-[#636262] max-[479px]:text-sm pb-8">
-              ©{" "}
-              <a
-                className="text-primary"
-                href={footer?.copyright?.url}
-                target={footer?.copyright?.target}
-              >
-                {footer?.copyright?.owner}
-              </a>{" "}
-              {footer?.copyright?.text}
-            </p>
-          </div>
         </div>
+      </div>
+      <div className="w-full text-center">
+        <p className="text-[#636262] max-[479px]:text-sm pb-8">
+          ©{" "}
+          <a
+            className="text-primary"
+            href={footer?.copyright?.url}
+            target={footer?.copyright?.target}
+          >
+            {footer?.copyright?.owner}
+          </a>{" "}
+          {footer?.copyright?.text}
+        </p>
       </div>
     </footer>
   );
