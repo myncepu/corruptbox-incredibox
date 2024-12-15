@@ -7,6 +7,7 @@ import type { Game } from "@/types/game";
 import Games from "../games";
 import Stars from "../stars";
 import moment from "moment";
+import GameIframe from "./iframe";
 
 export default ({
   game,
@@ -28,13 +29,7 @@ export default ({
         {/* <div className="grid gap-12 sm:gap-20 lg:grid-cols-2"> */}
         <div>
           <div className="flex flex-col items-start gap-2">
-            <span className="font-bold text-2xl">{game.title}</span>
-
-            {(game.thumbnail_url) && (
-              <div className="min-h-96 rounded-md overflow-hidden">
-                <Preview game={game} />
-              </div>
-            )}
+            <GameIframe game={game} />
             <div className="flex items-center gap-2 mt-4">
               <p className="text-md sm:text-md">
                 Created at{" "}
@@ -75,16 +70,6 @@ export default ({
               ))} */}
             </div>
 
-            <div className="flex flex-col gap-4 font-semibold sm:flex-row">
-              <a
-                href={game.game_url}
-                target="_blank"
-                rel="noreferrer"
-                className="flex items-center gap-2 rounded-md border border-solid bg-primary text-white px-6 py-3 truncate"
-              >
-                <span>Visit {game.title} 👉</span>
-              </a>
-            </div>
           </div>
         </div>
       </div>
