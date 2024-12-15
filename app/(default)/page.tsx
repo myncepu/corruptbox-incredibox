@@ -1,11 +1,12 @@
 import {
-  getFeaturedProjects,
-  getProjectsCount,
-  getProjectsWithKeyword,
-} from "@/models/project";
+  getFeaturedGames,
+  getGamesCount,
+  getGamesWithKeyword,
+  getGamesWithTranslation,
+} from "@/models/game";
 
 import LandingPage from "@/templates/tailspark/landing/pages/index";
-import type { Project } from "@/types/project";
+import type { Game } from "@/types/game";
 import pagejson from "@/pagejson/en.json";
 
 export const runtime = "edge";
@@ -16,21 +17,21 @@ export default async function Home({
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 }) {
   const { q } = await searchParams;
-  let projects: Project[] = [];
+  let games: Game[] = [];
 
   if (q) {
-    projects = await getProjectsWithKeyword(q as string, 1, 100);
+    games = await getGamesWithKeyword(q as string, 1, 100);
   } else {
-    projects = await getFeaturedProjects(1, 100);
+    games = await getGamesWithTranslation(1, 100, "en");
   }
 
-  const projectsCount = await getProjectsCount();
+  const gamesCount = await getGamesCount();
 
   return (
     <LandingPage
       page={pagejson}
-      projects={projects}
-      projectsCount={projectsCount}
+      games={games}
+      gamesCount={gamesCount}
     />
   );
 }

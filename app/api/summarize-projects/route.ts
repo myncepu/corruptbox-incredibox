@@ -1,7 +1,7 @@
 import { respData, respErr } from "@/utils/resp";
 
-import { getProjectsWithoutSummary } from "@/models/project";
-import { sumProject } from "@/services/project";
+import { getProjectsWithoutSummary } from "@/models/game";
+import { sumProject } from "@/services/game";
 
 export const runtime = "edge";
 

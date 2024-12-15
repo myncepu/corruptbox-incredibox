@@ -1,24 +1,24 @@
 import Faq from "../components/faq";
 import Hero from "../components/hero";
 import type { Page } from "@/types/landing";
-import type { Project } from "@/types/project";
-import Projects from "../components/projects";
+import type { Game } from "@/types/game";
+import Games from "../components/games/index";
 import Search from "../components/search";
 
 export default function ({
   page,
-  projects,
-  projectsCount,
+  games,
+  gamesCount,
 }: {
   page: Page;
-  projects: Project[];
-  projectsCount: number;
+  games: Game[];
+  gamesCount: number;
 }) {
   return (
     <div>
-      {page.hero && <Hero hero={page.hero} count={projectsCount} />}
+      {page.hero && <Hero hero={page.hero} count={gamesCount} />}
       <Search />
-      <Projects projects={projects} />
+      <Games games={games} />
       {page.faq && <Faq section={page.faq} />}
     </div>
   );

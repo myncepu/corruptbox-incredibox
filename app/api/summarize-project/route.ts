@@ -1,7 +1,7 @@
 import { respData, respErr } from "@/utils/resp";
 
-import { findProjectByName } from "@/models/project";
-import { sumProject } from "@/services/project";
+import { findProjectByName } from "@/models/game";
+import { sumProject } from "@/services/game";
 
 export const runtime = "edge";
 

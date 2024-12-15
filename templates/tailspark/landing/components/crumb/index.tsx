@@ -1,8 +1,8 @@
 import { FiHome } from "react-icons/fi";
 import { MdKeyboardArrowRight } from "react-icons/md";
-import type { Project } from "@/types/project";
+import type { Game } from "@/types/game";
 
-export default ({ project }: { project: Project }) => {
+export default ({ game }: { game: Game }) => {
   return (
     <nav className="flex" aria-label="Breadcrumb">
       <ul className="flex items-center space-x-2">
@@ -34,9 +34,9 @@ export default ({ project }: { project: Project }) => {
             <a
               className="ml-2 text-md font-medium text-gray-500 hover:text-gray-700"
               aria-current="page"
-              href={`/${project.name}`}
+              href={`/game/${game.slug}`}
             >
-              {project.name}
+              {game.title}
             </a>
           </div>
         </li>

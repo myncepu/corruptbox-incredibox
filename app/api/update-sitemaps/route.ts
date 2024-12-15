@@ -1,6 +1,6 @@
 import * as xmlbuilder from "xmlbuilder";
 
-import { getProjects } from "@/models/project";
+import { getProjects } from "@/models/game";
 import moment from "moment";
 import { respData } from "@/utils/resp";
 import { writeFile } from "node:fs";

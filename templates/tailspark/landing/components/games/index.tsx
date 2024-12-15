@@ -1,13 +1,13 @@
 "use client";
 
-import type { Project } from "@/types/project";
-import ProjectItem from "./item";
+import type { Game } from "@/types/game";
+import GameItem from "./item";
 
 export default ({
-  projects,
+  games,
   loading,
 }: {
-  projects: Project[];
+  games: Game[];
   loading?: boolean;
 }) => {
   return (
@@ -15,10 +15,10 @@ export default ({
       <div className="mx-auto max-w-7xl px-5 py-4 md:px-10 md:py-4 lg:py-4">
         {!loading ? (
           <div className="mb-8 gap-5 py-4 [column-count:1] md:mb-12 md:[column-count:2] lg:mb-16 lg:[column-count:3]">
-            {projects.map((item: Project, idx: number) => {
+            {games.map((item: Game, idx: number) => {
               return (
                 <div key={item.uuid}>
-                  <ProjectItem project={item} />
+                  <GameItem game={item} />
                 </div>
               );
             })}

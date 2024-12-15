@@ -64,7 +64,7 @@ importers:
         specifier: ^14.1.2
         version: 14.1.2
       '@types/node':
-        specifier: ^20
+        specifier: ^20.17.9
         version: 20.17.9
       '@types/react':
         specifier: ^18

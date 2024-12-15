@@ -3,49 +3,49 @@ import { BsTags } from "react-icons/bs";
 import Crumb from "../crumb";
 import Markdown from "@/components/markdown";
 import Preview from "./preview";
-import type { Project } from "@/types/project";
-import Projects from "../projects";
+import type { Game } from "@/types/game";
+import Games from "../games";
 import Stars from "../stars";
 import moment from "moment";
 
 export default ({
-  project,
-  more_projects,
+  game,
+  more_games,
 }: {
-  project: Project;
-  more_projects?: Project[];
+  game: Game;
+  more_games?: Game[];
 }) => {
-  const tagsArr = project.tags ? project.tags.split(",") : [];
+  // const tagsArr = game.tags ? game.tags.split(",") : [];
 
   return (
     <section>
       <div className="mx-auto w-full max-w-7xl px-5 py-8 md:px-10 md:py-8 lg:py-8">
         <div className="w-full mb-4 text-lg">
-          <Crumb project={project} />
+          <Crumb game={game} />
         </div>
 
-        <div className="grid gap-12 sm:gap-20 lg:grid-cols-2">
-          <div className="flex flex-col items-start gap-2">
-            <h1 className="text-4xl font-bold md:text-6xl">{project.title}</h1>
 
+        {/* <div className="grid gap-12 sm:gap-20 lg:grid-cols-2"> */}
+        <div>
+          <div className="flex flex-col items-start gap-2">
+            <span className="font-bold text-2xl">{game.title}</span>
+
+            {(game.thumbnail_url) && (
+              <div className="min-h-96 rounded-md overflow-hidden">
+                <Preview game={game} />
+              </div>
+            )}
             <div className="flex items-center gap-2 mt-4">
               <p className="text-md sm:text-md">
                 Created at{" "}
                 <span className="text-primary">
-                  {moment(project.updated_at).fromNow()}
+                  {moment(game.created_at).fromNow()}
                 </span>
-              </p>
-              <p className="text-md sm:text-md">
-                by <span className="text-primary">{project.author_name}</span>
               </p>
             </div>
             <div className="mt-4">
               <Stars />
             </div>
-            <p className="text-sm text-[#808080] sm:text-xl mt-4">
-              {project.description}
-            </p>
-            <div className="mb-8 mt-8 h-px w-full bg-black" />
             <div className="mb-6 flex flex-col gap-2 text-sm text-[#808080] sm:text-base lg:mb-8">
               <p className="font-medium">
                 <BiCategory className="inline-block mr-2" />
@@ -53,14 +53,14 @@ export default ({
               </p>
               <div className="flex flex-wrap gap-2 mt-1">
                 <span className="text-primary text-xs border border-solid border-primary rounded-md px-2 py-1">
-                  {project.category}
+                  {game.category?.name}
                 </span>
               </div>
               <p className="font-medium mt-4">
                 <BsTags className="inline-block mr-2" />
                 Tags
               </p>
-              {tagsArr?.map((tag) => (
+              {/* {tagsArr?.map((tag) => (
                 <p key={tag}>
                   <input
                     type="checkbox"
@@ -72,37 +72,32 @@ export default ({
                   />
                   <label htmlFor={`tag-${tag}`}>{tag}</label>
                 </p>
-              ))}
+              ))} */}
             </div>
 
             <div className="flex flex-col gap-4 font-semibold sm:flex-row">
               <a
-                href={project.url}
+                href={game.game_url}
                 target="_blank"
                 rel="noreferrer"
                 className="flex items-center gap-2 rounded-md border border-solid bg-primary text-white px-6 py-3 truncate"
               >
-                <span>Visit {project.title} 👉</span>
+                <span>Visit {game.title} 👉</span>
               </a>
             </div>
           </div>
-          {(project.img_url || project.avatar_url) && (
-            <div className="min-h-96 rounded-md overflow-hidden">
-              <Preview project={project} />
-            </div>
-          )}
         </div>
       </div>
 
-      {project.summary && (
+      {game.description && (
         <div className="w-full md:max-w-7xl mx-auto px-8 py-4 mt-16 text-left border border-gray-200 rounded-lg">
-          <Markdown content={project.summary || ""} />
+          <Markdown content={game.description || ""} />
         </div>
       )}
 
       <div className="w-full text-center">
         <p className="mx-auto font-bold text-3xl mt-16 mb-4">View More</p>
-        {more_projects && <Projects projects={more_projects} />}
+        {more_games && <Games games={more_games} />}
       </div>
     </section>
   );
