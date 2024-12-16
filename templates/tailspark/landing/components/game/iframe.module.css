@@ -97,6 +97,12 @@
   bottom: 0;
 }
 
+.fullscreenInfo {
+  bottom: 0 !important;
+  padding-bottom: 0 !important;
+  z-index: 99999 !important;
+}
+
 /* 修改现有的 iOS Safari 特殊处理 */
 @supports (-webkit-touch-callout: none) {
   .fullscreenContainer {

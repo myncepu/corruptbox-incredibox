@@ -111,7 +111,7 @@ export default function GameIframe({ game }: { game: Game }) {
       }`}
     >
       {!isPlaying ? (
-        <div className="relative w-full h-full">
+        <div className="relative w-full h-full z-40">
           {/* 背景图片 */}
           <div className="absolute inset-0">
             <Image
@@ -139,7 +139,7 @@ export default function GameIframe({ game }: { game: Game }) {
         </div>
       ) : (
         // 游戏iframe视图
-        <div className="relative w-full h-full bg-gray-900">
+        <div className="relative w-full h-[calc(100%-2rem)] bg-gray-900">
           <iframe
             ref={iframeRef}
             src={game.game_url}
@@ -166,9 +166,7 @@ export default function GameIframe({ game }: { game: Game }) {
       )}
 
       {/* 底部信息栏 */}
-      <div className={`absolute bottom-0 left-0 right-0 bg-gray-900/80 backdrop-blur-sm px-4 py-2 flex items-center justify-between ${
-        isFullscreen ? styles.fullscreenInfo : ''
-      }`}>
+      <div className={"absolute bottom-0 left-0 right-0 bg-gray-900/80 backdrop-blur-sm px-4 py-2 flex items-center justify-between z-50"}>
         <div className="flex items-center gap-3 min-w-0 flex-1">
           <div className="h-8 w-8 flex-shrink-0 rounded-full overflow-hidden">
             <Image
@@ -187,7 +185,7 @@ export default function GameIframe({ game }: { game: Game }) {
         <button
           type="button"
           onClick={handleFullscreen}
-          className="ml-4 flex-shrink-0 text-gray-100 hover:text-gray-300 transition-colors"
+          className="ml-4 flex-shrink-0 text-gray-100 hover:text-gray-300 transition-colors z-50"
           title={isFullscreen ? "Exit Fullscreen" : "Fullscreen"}
         >
           {isFullscreen ? <IoContract size={32} /> : <IoExpand size={32} />}
