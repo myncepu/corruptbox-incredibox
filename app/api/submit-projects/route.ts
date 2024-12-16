@@ -1,31 +1,31 @@
-import { parseProject, saveProject } from "@/services/game";
+import { parseGame } from "@/services/game";
 import { respData, respErr } from "@/utils/resp";
 
-import type { Project } from "@/types/game";
+import type { Game } from "@/types/game";
 
 export const runtime = "edge";
 
 export async function POST(req: Request) {
   try {
-    const projects: Project[] = await req.json();
+    const games: Game[] = await req.json();
 
-    const parsedProjects = projects.map((p) => parseProject(p));
-    if (!parsedProjects) {
-      return respErr("invalid project");
+    const parsedGames = games.map((g) => parseGame(g));
+    if (!parsedGames) {
+      return respErr("invalid game");
     }
 
-    const savedProjects = await Promise.all(
-      parsedProjects
-        .filter((p): p is Project => p !== undefined)
-        .map(saveProject)
+    const savedGames = await Promise.all(
+      parsedGames
+        .filter((g): g is Game => g !== undefined)
+        // .map(saveGame)
     );
-    if (!savedProjects) {
-      return respErr("save project failed");
+    if (!savedGames) {
+      return respErr("save game failed");
     }
 
-    return respData(savedProjects);
+    return respData(savedGames);
   } catch (e) {
-    console.log("submit projects failed", e);
-    return respErr("submit projects failed");
+    console.log("submit games failed", e);
+    return respErr("submit games failed");
   }
 }

@@ -23,7 +23,6 @@ export default function ({
       </div>
       {page.hero && <Hero hero={page.hero} count={gamesCount} />}
       <Games games={games} />
-      {page.faq && <Faq section={page.faq} />}
       <div className="w-full md:max-w-7xl mx-auto px-8 py-4 mt-16 text-left border border-gray-200 rounded-lg">
         <article>
           {games.length > 0 && games[0].description && (
@@ -31,6 +30,7 @@ export default function ({
           )}
         </article>
       </div>
+      {page.faq && <Faq section={page.faq} />}
     </div>
   );
 }

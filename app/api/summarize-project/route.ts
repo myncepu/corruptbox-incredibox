@@ -1,27 +1,27 @@
 import { respData, respErr } from "@/utils/resp";
 
-import { findProjectByName } from "@/models/game";
-import { sumProject } from "@/services/game";
+import { findGameBySlug } from "@/models/game";
+import { summarizeGame } from "@/services/game";
 
 export const runtime = "edge";
 
 export async function POST(req: Request) {
   try {
-    const { name } = await req.json();
-    if (!name) {
-      return respErr("name is required");
+    const { slug } = await req.json();
+    if (!slug) {
+      return respErr("slug is required");
     }
 
-    const project = await findProjectByName(name);
-    if (!project || !project.uuid || !project.url) {
-      return respErr("invalid project");
+    const game = await findGameBySlug(slug, "en");
+    if (!game || !game.uuid) {
+      return respErr("invalid game");
     }
 
-    const summarizedProject = await sumProject(project);
+    const summarizedGame = await summarizeGame(game);
 
-    return respData(summarizedProject);
+    return respData(summarizedGame);
   } catch (e) {
-    console.log("summarize project failed: ", e);
-    return respErr("summarize project failed");
+    console.log("summarize game failed: ", e);
+    return respErr("summarize game failed");
   }
 }
