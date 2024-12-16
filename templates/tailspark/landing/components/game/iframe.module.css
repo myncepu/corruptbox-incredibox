@@ -74,7 +74,7 @@
   height: 100vh !important;
   max-width: none !important;
   margin: 0 !important;
-  z-index: 9999 !important;
+  z-index: 9 !important;
   border-radius: 0 !important;
   background: #000 !important;
 }
@@ -97,10 +97,15 @@
   bottom: 0;
 }
 
-/* 针对 iOS Safari 的特殊处理 */
+/* 修改现有的 iOS Safari 特殊处理 */
 @supports (-webkit-touch-callout: none) {
   .fullscreenContainer {
     position: absolute !important;
-    height: 100vh !important;
+    height: calc(100vh - env(safe-area-inset-bottom)) !important; /* 考虑底部安全区域 */
   }
-} 
+  /* 添加针对底部信息栏的处理 */
+  .fullscreenContainer .bottom-0 {
+    bottom: env(safe-area-inset-bottom) !important;
+    padding-bottom: calc(0.5rem + env(safe-area-inset-bottom)) !important;
+  }
+}

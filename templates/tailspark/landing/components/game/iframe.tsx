@@ -2,8 +2,7 @@
 
 import { useState, useRef, useEffect } from 'react';
 import Image from 'next/image';
-import { IoPlayCircleOutline } from "react-icons/io5";
-import { IoExpand } from "react-icons/io5";
+import { IoPlayCircleOutline, IoExpand, IoContract, IoArrowBack } from "react-icons/io5";
 import type { Game } from '@/types/game';
 import styles from './iframe.module.css';
 
@@ -107,7 +106,7 @@ export default function GameIframe({ game }: { game: Game }) {
   return (
     <div
       ref={containerRef}
-      className={`relative w-[calc(100%-2rem)] aspect-video rounded-2xl overflow-hidden bg-gray-900 mx-auto my-4 max-w-5xl ${
+      className={`relative w-[calc(100%-2rem)] h-full aspect-video rounded-2xl overflow-hidden bg-gray-900 mx-auto my-4 max-w-5xl ${
         isFullscreen ? styles.fullscreenContainer : ''
       }`}
     >
@@ -154,8 +153,22 @@ export default function GameIframe({ game }: { game: Game }) {
         </div>
       )}
 
+      {/* 返回按钮 */}
+      {isFullscreen && (
+        <button
+          type="button"
+          onClick={handleFullscreen}
+          className="absolute top-4 left-4 text-gray-100 hover:text-gray-300 transition-colors bg-gray-900/80 backdrop-blur-sm p-2 rounded-lg z-50"
+          title="Exit Fullscreen"
+        >
+          <IoArrowBack size={32} />
+        </button>
+      )}
+
       {/* 底部信息栏 */}
-      <div className="absolute bottom-0 left-0 right-0 bg-gray-900/80 backdrop-blur-sm px-4 py-2 flex items-center justify-between">
+      <div className={`absolute bottom-0 left-0 right-0 bg-gray-900/80 backdrop-blur-sm px-4 py-2 flex items-center justify-between ${
+        isFullscreen ? styles.fullscreenInfo : ''
+      }`}>
         <div className="flex items-center gap-3 min-w-0 flex-1">
           <div className="h-8 w-8 flex-shrink-0 rounded-full overflow-hidden">
             <Image
@@ -175,9 +188,9 @@ export default function GameIframe({ game }: { game: Game }) {
           type="button"
           onClick={handleFullscreen}
           className="ml-4 flex-shrink-0 text-gray-100 hover:text-gray-300 transition-colors"
-          title="Fullscreen"
+          title={isFullscreen ? "Exit Fullscreen" : "Fullscreen"}
         >
-          <IoExpand size={32} />
+          {isFullscreen ? <IoContract size={32} /> : <IoExpand size={32} />}
         </button>
       </div>
     </div>
