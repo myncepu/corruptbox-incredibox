@@ -12,6 +12,7 @@ export const runtime = "edge";
 export default async function Home() {
   let games: Game[] = [];
   games = await getGamesWithTranslation(1, 100, "en");
+  console.log('games', games);
 
   const gamesCount = await getGamesCount();
 

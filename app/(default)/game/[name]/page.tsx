@@ -33,6 +33,8 @@ export default async function GamePage({
   const { name } = await params;
 
   const game = await findGameBySlug(name, "en");
+  console.log('game', game);
+  console.log('name', name);
   if (!game || !game.uuid) {
     return <div>Game not found</div>;
   }

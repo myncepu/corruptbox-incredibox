@@ -17,8 +17,6 @@ export async function insertGame(game: Game) {
       slug: game.slug,
       thumbnail_url: game.thumbnail_url,
       game_url: game.game_url,
-      is_featured: game.is_featured,
-      sort: game.sort,
       created_at: new Date().toISOString()
     })
     .select('id')
@@ -69,9 +67,6 @@ export async function findGameByUuid(
     locale: data.locale,
     thumbnail_url: data.thumbnail_url,
     game_url: data.game_url,
-    is_featured: data.is_featured,
-    is_home_game: data.is_home_game,
-    sort: data.sort,
     created_at: data.created_at
   };
 }
@@ -85,34 +80,21 @@ export async function findGameBySlug(
     .from("games")
     .select(`
       *,
-      game_translations!inner(
+      game_translations (
         title,
         description,
         meta_title,
         meta_description,
         keywords,
         locale
-      ),
-      categories:category_uuid(
-        uuid,
-        slug,
-        category_translations!inner(
-          name,
-          description,
-          meta_title,
-          meta_description,
-          keywords
-        )
       )
     `)
     .eq("slug", slug)
     .eq("game_translations.locale", locale)
-    .eq("categories.category_translations.locale", locale)
     .single();
 
   if (!data) return undefined;
-
-  // 转换为Game格式
+  
   return {
     uuid: data.uuid,
     slug: data.slug,
@@ -123,20 +105,8 @@ export async function findGameBySlug(
     keywords: data.game_translations[0]?.keywords,
     thumbnail_url: data.thumbnail_url,
     game_url: data.game_url,
-    is_featured: data.is_featured,
-    is_home_game: data.is_home_game,
-    sort: data.sort,
     created_at: data.created_at,
     locale: data.game_translations[0]?.locale,
-    category: data.categories ? {
-      uuid: data.categories.uuid,
-      slug: data.categories.slug,
-      name: data.categories.category_translations[0]?.name,
-      description: data.categories.category_translations[0]?.description,
-      meta_title: data.categories.category_translations[0]?.meta_title,
-      meta_description: data.categories.category_translations[0]?.meta_description,
-      keywords: data.categories.category_translations[0]?.keywords
-    } : null
   };
 }
 
@@ -155,7 +125,6 @@ export async function getGames(
         description
       )
     `)
-    .order("sort", { ascending: false })
     .order("created_at", { ascending: false })
     .range((page - 1) * limit, page * limit - 1);
 
@@ -166,11 +135,8 @@ export async function getGames(
     slug: game.slug,
     title: game.game_translations[0]?.title,
     description: game.game_translations[0]?.description,
-    is_featured: game.is_featured,
     thumbnail_url: game.thumbnail_url,
     game_url: game.game_url,
-    is_home_game: game.is_home_game,
-    sort: game.sort,
     created_at: game.created_at,
     meta_title: game.game_translations[0]?.meta_title,
     meta_description: game.game_translations[0]?.meta_description,
@@ -196,9 +162,6 @@ export async function getFeaturedGames(
   const { data, error } = await supabase
     .from("games")
     .select("*")
-    .eq("is_featured", true)
-    .eq("status", GameStatus.Created)
-    .order("sort", { ascending: false })
     .order("created_at", { ascending: false })
     .range((page - 1) * limit, page * limit - 1);
 
@@ -215,8 +178,6 @@ export async function getRandomGames(
   const { data, error } = await supabase
     .from("games")
     .select("*")
-    .eq("status", GameStatus.Created)
-    .order("sort", { ascending: false })
     .order("created_at", { ascending: false })
     .range((page - 1) * limit, page * limit - 1);
 
@@ -238,8 +199,6 @@ export async function getGamesWithKeyword(
     .or(
       `name.ilike.%${keyword}%,title.ilike.%${keyword}%,description.ilike.%${keyword}%`
     )
-    .eq("status", GameStatus.Created)
-    .order("sort", { ascending: false })
     .order("created_at", { ascending: false })
     .range((page - 1) * limit, page * limit - 1);
 
@@ -260,7 +219,6 @@ export async function getGamesWithoutSummary(
     .from("games")
     .select("*")
     .is("summary", null)
-    .eq("status", GameStatus.Created)
     .range((pageNumber - 1) * limitNumber, pageNumber * limitNumber - 1);
 
   if (error) return [];
@@ -286,22 +244,9 @@ export async function getGamesWithTranslation(
         meta_description,
         keywords,
         locale
-      ),
-      categories:category_uuid(
-        uuid,
-        slug,
-        category_translations!inner(
-          name,
-          description,
-          meta_title,
-          meta_description,
-          keywords
-        )
       )
     `)
     .eq("game_translations.locale", locale)
-    .eq("categories.category_translations.locale", locale)
-    .order("sort", { ascending: false })
     .order("created_at", { ascending: false })
     .range((page - 1) * limit, page * limit - 1);
 
@@ -318,20 +263,8 @@ export async function getGamesWithTranslation(
     keywords: game.game_translations[0]?.keywords,
     thumbnail_url: game.thumbnail_url,
     game_url: game.game_url,
-    is_featured: game.is_featured,
-    is_home_game: game.is_home_game,
-    sort: game.sort,
     created_at: game.created_at,
     locale: game.game_translations[0]?.locale,
-    category: game.categories ? {
-      uuid: game.categories.uuid,
-      slug: game.categories.slug,
-      name: game.categories.category_translations[0]?.name,
-      description: game.categories.category_translations[0]?.description,
-      meta_title: game.categories.category_translations[0]?.meta_title,
-      meta_description: game.categories.category_translations[0]?.meta_description,
-      keywords: game.categories.category_translations[0]?.keywords
-    } : null
   }));
 }
 

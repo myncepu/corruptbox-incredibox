@@ -7,9 +7,6 @@ export interface Game {
   meta_description: string;
   thumbnail_url: string;
   game_url: string;
-  is_featured: boolean;
-  is_home_game: boolean;
-  sort: number;
   created_at: string;
   locale: string;
   keywords?: string;
