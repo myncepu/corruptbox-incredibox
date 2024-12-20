@@ -1,6 +1,5 @@
 import { ThemeProvider } from "@/providers/theme";
 import localFont from "next/font/local";
-import PlausibleProvider from "next-plausible"
 
 
 const geistSans = localFont({
@@ -28,7 +27,7 @@ export default function RootLayout({
         />
         <meta name="google-adsense-account" content="ca-pub-2123767634383915" />
         <link rel="icon" href="/favicon.ico" />
-        <PlausibleProvider domain={`${process.env.NEXT_PUBLIC_WEB_URL}`} />
+        <script defer data-domain="corruptboxincredibox.com" src="https://plausible.online/js/script.js" />
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
